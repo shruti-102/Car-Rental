@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Backend",
+    "\\Backend\\DataAccess",
+    "\\Backend\\DataAccess\\Models",
+    "\\Backend\\DataAccess\\Repository"
+  ],
+  "SelectedNode": "\\Backend\\DataAccess\\DataAccess.cs",
+  "PreviewInSolutionExplorer": false
+}

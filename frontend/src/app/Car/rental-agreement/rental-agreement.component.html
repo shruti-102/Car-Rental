@@ -1,0 +1,31 @@
+<div>
+  <h2>Rental Agreement</h2>
+  <div class="row">
+    <!-- Car Image on the left -->
+    <div class="col-md-4">
+      <img src="{{car.image}}" alt="Car Image" class="img-fluid">
+    </div>
+
+    <!-- Car Details on the right -->
+    <div class="col-md-8">
+      <!-- Display car details here -->
+      <p>Maker: {{ car?.maker }}</p>
+      <p>Model: {{ car?.model }}</p>
+      <p>Price: {{car?.price}}</p>
+      <p>Start Date: {{ startDate | date }}</p>
+      <p>End Date: {{ endDate | date }}</p>
+      <p>Total Price: {{ calculateTotalPrice() }}</p>
+      <!-- Add more car details as needed -->
+    </div>
+
+    
+  </div>
+  <div class="row mt-3">
+    <div class="col-md-8 offset-md-4">
+      <button (click)="editAgreement()" class="btn btn-outline-primary me-2">Edit Agreement</button>
+      <button (click)="bookCar()" class="btn btn-success">Book Car</button>
+    </div>
+  </div>
+  <!-- Buttons for editing and booking -->
+  
+</div>

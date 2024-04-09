@@ -1,0 +1,29 @@
+<!-- inspection.component.html -->
+<div class="container mt-4">
+    <h2>Pending Rental Agreements Inspection</h2>
+    <div class="row">
+      <div class="col" *ngFor="let agreement of pendingRentalAgreements">
+        <div class="card mb-3" style="max-width: 540px;">
+          <div class="row g-0">
+            <div class="col-md-4 image-col">
+              <!-- Display the car image here -->
+              <img [src]="'assets/images/' + agreement.image + '.jpg'" alt="{{ agreement.carModel }}" class="img-fluid" />
+            </div>
+            <div class="col-md-8 details-col">
+              <div class="card-body">
+                <h5 class="card-title">Agreement ID: {{ agreement.id }}</h5>
+                <p class="card-text">User: {{ agreement.userEmail }}</p>
+                <p class="card-text">Car: {{ agreement.maker }} {{ agreement.model }}</p>
+                <p class="card-text">Price: ${{ agreement.price }}</p>
+                <p class="card-text">Start Date: {{ agreement.startDate | date: 'short' }}</p>
+                <p class="card-text">End Date: {{ agreement.endDate | date: 'short' }}</p>
+                <button class="btn btn-primary me-2" (click)="approveAgreement(agreement.id)">Approve</button>
+                <button class="btn btn-primary" (click)="approveAgreement(agreement.id)">Disapprove</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

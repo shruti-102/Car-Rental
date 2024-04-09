@@ -1,0 +1,19 @@
+<button (click)="onBack()" class="btn btn-primary">Back</button>
+<br>
+<br>
+<div class="container" *ngIf="car">
+    <div class="row">
+      <div class="col-md-4">
+        <img src="{{car.image}}" alt="{{ car.maker }} {{ car.model }}" class="img-fluid">
+      </div>
+      <div class="col-md-8">
+        <h2>{{ car.maker }} {{ car.model }}</h2>
+        <p>Price: {{ car.price }}</p>
+        <!-- Add more details here -->
+        
+          <button class="btn btn-primary" (click)="bookCar()">Book</button>
+      
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,50 @@
+[
+    {
+        "id":1,
+        "maker":"TATA",
+        "model":"Nissan",
+        "price":2500,
+        "status":true,
+        "image":"TATA-Nisaan",
+        "bookings": [
+            {
+              "startDate": "2023-10-02",
+              "endDate": "2023-10-05"
+            }
+            
+          ]
+    },
+    {
+        "id":2,
+        "maker":"Maruti Suzuki",
+        "model":"Swift",
+        "price":2000,
+        "status":true,
+        "image":"Maruti Suzuki-Swift",
+        "bookings":[]
+    },
+    {
+        "id":3,
+        "maker":"Hyundai",
+        "model":"i20",
+        "price":1500,
+        "status":true,
+        "image":"Hyundai-i20",
+        "bookings":[]
+    },
+    {
+        "id":4,
+        "maker":"Nissan",
+        "model":"Magnite",
+        "price":2500,
+        "status":true,
+        "image":"Nissan-Magnite",
+        "bookings": [
+            {
+              "startDate": "2023-09-19",
+              "endDate": "2023-09-25"
+            }
+            
+          ]
+    }
+]

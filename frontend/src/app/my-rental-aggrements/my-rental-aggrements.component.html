@@ -1,0 +1,14 @@
+<div class="container">
+    <h2>My Rental Agreements</h2>
+  
+    <ul>
+      <li *ngFor="let agreement of displayedRentalAgreements">
+        <p><strong>Car:</strong> {{ agreement.maker }} {{ agreement.model }}</p>
+        <p><strong>Rental Period:</strong> {{ agreement.startDate }} to {{ agreement.endDate }}</p>
+        <p><strong>Price:</strong> {{ agreement.price }}</p>
+
+        <button *ngIf="agreement.status" (click)="returnCar(agreement.id)">Return Car</button>
+      </li>
+    </ul>
+  </div>
+  

@@ -1,0 +1,12 @@
+<!-- <ng-container *ngIf="rentDays != null"> -->
+<!-- </ng-container> -->
+<div class="row">
+  <div *ngFor="let car of  filteredCars || availableCars  " class="shadow-lg col-sm-4 p-3">
+    <app-car-card [car]="car" [rentalDays]="rentDays"></app-car-card>
+  </div>
+  <!-- <div *ngFor="let car of Cars" class="shadow-lg col-sm-4 p-3">
+    <app-car-card [car]="car"></app-car-card>
+  </div> -->
+  <!-- <p>{{rentDays}}</p> -->
+</div>
+

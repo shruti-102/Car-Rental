@@ -1,0 +1,18 @@
+<div class="card">
+  <div class="card-img-wrapper">
+    <img class="card-img-top" src="{{car.image}}" />
+    <ul class="list-inline text-center member-icons animate">
+        
+        <li class="list-inline-item">
+            <button class="btn btn-primary" routerLink="/car-details/{{car.id}}" [queryParams]="{rentalDays:rentalDays}">Details</button>
+        </li>
+    </ul>
+  </div>
+
+  <div class="card-body p-4">
+    <h1>{{ car.maker}} {{ car.model }}</h1>
+    <h2>{{ car.price }}</h2>
+    <!-- <h3>{{ car.status }}</h3> -->
+  </div>
+</div>
+<!-- <p>Selected Number of Days: {{ rentalDays }}</p> -->

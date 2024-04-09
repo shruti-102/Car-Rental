@@ -1,0 +1,140 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <!-- app-navbar.component.html -->
+<ul class="navbar-nav">
+  <!-- ...other links -->
+  <!-- <li class="nav-item" *ngIf="userIsAdmin">
+    <a
+      class="nav-link"
+      routerLink="/admin-dashboard"
+      >Admin Dashboard</a>
+  </li> -->
+</ul>
+
+  <a class="navbar-brand" href="/">Car Rental App</a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarNav"
+    aria-controls="navbarNav"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home</a>
+      </li>
+      <li class="nav-item" *ngIf="!userIsAdmin">
+        <a class="nav-link" [routerLink]="['/my-rental-aggrements']">Agreements</a>
+        <!-- New "Agreements" tab -->
+      </li>
+      <li class="nav-item" *ngIf="userIsAdmin">
+        <a class="nav-link" [routerLink]="['/inspection']">Inspection</a>
+        <!-- New "Agreements" tab -->
+      </li>
+    </ul>
+    <ul class="navbar-nav mr-auto" *ngIf="!userIsAdmin">
+      <li class="nav-item">
+        <div class="form-group px-2">
+          <label for="makerFilter">Maker:</label>
+          <select class="form-control" id="makerFilter"  [(ngModel)]="makerFilter" (change)="onMakerSelectionChange()">
+            <option value="">All Makers</option>
+            <option *ngFor="let maker of makerOptions" [ngValue]="maker.name">{{maker.name}}</option>
+            <!-- Add more maker options as needed -->
+          </select>
+        </div>
+      </li>
+      <li class="nav-item">
+        <label for="modelFilter" class="mr-2">Model:</label>
+        <select class="form-control" id="modelFilter"  [(ngModel)]="modelFilter">
+          <option value="">Select Maker First</option>
+          <!-- Add model options dynamically using JavaScript -->
+          <option *ngFor="let model of modelOptions" [ngValue]="model">{{ model.name}}</option>
+        </select>
+      </li>
+
+      <li class="nav-item">
+        <div class="form-group px-2">
+          <label for="priceFilter" class="mr-2" style="font-size: 14px;">Price:</label>
+          <select class="form-control" id="priceFilter" [(ngModel)]="priceFilter">
+            <option value="0">All Prices</option>
+            <option value="1000">Below 1,000</option>
+            <option value="2000">1,000 - 2,000</option>
+            <option value="3000">2,000 - 3,000</option>
+            <option value="4000">3,000 - 4,000</option>
+            <option value="5000">4,000 - 5,000</option>
+          </select>
+        </div>
+        
+      </li>
+      <button class="btn btn-outline-light btn-sm custom-small-button" (click)="filterCarsBasedOnFilters()">Apply Filters</button>
+      <li class="nav-item">
+        <div class="form-group px-2 w-10">
+          <label for="daysInput">Days to Book:</label>
+          <input
+            type="number"
+            class="form-control"
+            id="daysInput"
+            placeholder="Enter days"
+            [(ngModel)]="numberOfDays"/>
+          <button class="btn btn-outline-light" (click)="sendDays()">
+            Check Availability
+          </button>
+        </div>
+      </li>
+    </ul>
+
+    <ul
+      class="nav navbar-nav ml-auto"
+      style="margin-left: auto; margin-right: 20px"
+    >
+      <li *ngIf='!loggedin()' class="nav-item">
+        <a class="nav-link me-1" routerLink="user/register" routerLinkActive="active">Register</a>
+      </li>
+      <li *ngIf='!loggedin()' class="nav-item">
+        <a class="nav-link me-1" routerLink="user/login" routerLinkActive="active">LogIn</a>
+      </li>
+      <!-- <li *ngIf='loggedin()' class="nav-item">
+        <a class="nav-link" (click)="onLogout()">Logout</a>
+      </li> -->
+      <div *ngIf="loggedin()" class="dropdown mr-5" dropdown>
+        <a href="#" class="dropdown-toggle text-light" dropdownToggle (click)="false">
+            Welcome {{loggedinUser}}
+        </a>
+      <div class="dropdown-menu" *dropdownMenu>
+        <a href="#"class="dropdown-item">
+          <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+        <a href="#" class="dropdown-item">
+          <i class="far fa-user-circle"></i> My Profile</a>
+        <!-- <a href="#" class="dropdown-item">
+          <i class="fas fa-key"></i> Change Password</a> -->
+        <a (click)='onLogout()' class="dropdown-item">
+          <i class="fas fa-sign-out-alt"></i> Logout</a>
+    </div>
+    </div>
+    </ul>
+  </div>
+</nav>
+
+<!-- Include Bootstrap JS and other scripts here -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+  crossorigin="anonymous"
+></script>
+<script>
+  // JavaScript to enable/disable the model dropdown based on maker selection
+  document
+    .getElementById("makerFilter")
+    .addEventListener("change", function () {
+      const modelFilter = document.getElementById("modelFilter");
+      modelFilter.disabled = !this.value; // Enable model dropdown if maker is selected
+      if (!this.value) {
+        modelFilter.value = ""; // Reset model dropdown if maker is not selected
+      }
+    });
+</script>
